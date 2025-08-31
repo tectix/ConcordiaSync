@@ -1,0 +1,21 @@
+{
+  "name": "concordiasync",
+  "version": "1.0.0",
+  "description": "Chrome extension for Concordia University course schedule management",
+  "scripts": {
+    "start": "cd backend && npm install && npm start",
+    "install": "cd backend && npm install"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "keywords": [
+    "concordia",
+    "university",
+    "schedule",
+    "chrome-extension"
+  ],
+  "author": "tectix",
+  "license": "MIT"
+}
