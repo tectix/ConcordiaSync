@@ -8,7 +8,7 @@
   };
   
   const CONFIG = {
-    backendUrl: 'http://localhost:3000'
+    backendUrl: 'https://concordiasync-production.up.railway.app'
   };
   
   const DOM = {

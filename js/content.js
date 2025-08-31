@@ -99,12 +99,17 @@
     try {
       const pageText = document.body.textContent || document.body.innerText || '';
       console.log('ConcordiaSync: Extracting enrolled courses from page');
+      console.log('ConcordiaSync: Page text sample:', pageText.substring(0, 1000));
       
       const lines = pageText.split('\n').map(line => line.trim()).filter(line => line.length > 0);
       
+      const courseLines = lines.filter(line => /[A-Z]{4}\s+\d{3}/.test(line));
+      console.log('ConcordiaSync: Lines with course patterns:', courseLines);
+      
       for (let i = 0; i < lines.length; i++) {
         const line = lines[i];
-        const courseMatch = line.match(/^([A-Z]{4}\s+\d{3}[A-Z\-]*)/);
+        
+        const courseMatch = line.match(/([A-Z]{4}\s+\d{3}[A-Z\-]*)/);
         
         if (courseMatch) {
           const courseCode = courseMatch[1];
@@ -115,13 +120,17 @@
             section = sectionMatch[2];
           }
           
-          courses.push({
-            code: courseCode.replace(/\s+/g, ' ').trim(),
-            section: section,
-            term: getCurrentTerm()
-          });
+          const cleanCode = courseCode.replace(/\s+/g, ' ').replace(/[^A-Z0-9\s]/g, '').trim();
           
-          console.log('ConcordiaSync: Found enrolled course:', { code: courseCode, section });
+          if (cleanCode.length >= 8) {
+            courses.push({
+              code: cleanCode.substring(0, 8),
+              section: section,
+              term: getCurrentTerm()
+            });
+            
+            console.log('ConcordiaSync: Found enrolled course:', { code: cleanCode.substring(0, 8), section, original: courseCode });
+          }
         }
       }
       

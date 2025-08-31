@@ -10,9 +10,7 @@
   "host_permissions": [
     "https://campus.concordia.ca/*",
     "https://my.concordia.ca/*",
-    "http://localhost:3000/*",
-    "https://*.railway.app/*",
-    "https://*.render.com/*"
+    "https://concordiasync-production.up.railway.app/*"
   ],
   "content_scripts": [
     {
