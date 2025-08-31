@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConcordiaSync</title>
+  <link rel="stylesheet" href="css/popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>ConcordiaSync</h1>
+      <p>Export your Concordia schedule</p>
+    </header>
+    
+    <main>
+      <div id="status" class="status"></div>
+      
+      <section class="controls">
+        <button id="extractBtn" class="btn primary">
+          <span class="icon">📅</span>
+          Extract Schedule
+        </button>
+        
+        <button id="exportBtn" class="btn secondary" disabled>
+          <span class="icon">📥</span>
+          Download CSV
+        </button>
+      </section>
+      
+      <section id="preview" class="preview hidden">
+        <h3>Found Courses:</h3>
+        <div id="courseList" class="course-list"></div>
+      </section>
+    </main>
+  </div>
+  
+  <script src="js/popup.js"></script>
+</body>
+</html>

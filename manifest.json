@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "ConcordiaSync",
+  "version": "1.0.0",
+  "description": "Securely export Concordia University course schedules to Google Calendar",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://campus.concordia.ca/*",
+    "https://my.concordia.ca/*",
+    "http://localhost:3000/*",
+    "https://*.railway.app/*",
+    "https://*.render.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://campus.concordia.ca/*",
+        "https://my.concordia.ca/*"
+      ],
+      "js": ["js/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Export Schedule to Calendar"
+  },
+  "icons": {
+    "16": "assets/icon-16.png",
+    "48": "assets/icon-48.png",
+    "128": "assets/icon-128.png"
+  }
+}
